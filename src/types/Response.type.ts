@@ -1,4 +1,4 @@
-type SuccessResponse = {
+export type UserData = {
   id: number;
   name: string;
   username: string;
@@ -21,5 +21,7 @@ type SuccessResponse = {
     bs: string;
   };
 };
+
+type SuccessResponse = UserData[];
 
 export default SuccessResponse;

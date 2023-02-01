@@ -6,9 +6,13 @@ const fetch = () =>
   axios.get(process.env.REACT_APP_ENDPOINT || "").then((res) => res.data);
 
 const useUsersData = () =>
-  useQuery<SuccessResponse>({
+  useQuery<SuccessResponse, SuccessResponse>({
     queryKey: ["users"],
     queryFn: fetch,
+    onError: (err) => {
+      console.error(err);
+      return [];
+    },
   });
 
 export default useUsersData;
