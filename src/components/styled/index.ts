@@ -5,6 +5,7 @@ export const Main = styled("main")`
   flex-direction: column;
   min-height: 100vh;
   max-width: 1400px;
+  margin-inline: auto;
 `;
 
 export const Block = styled("section")`
