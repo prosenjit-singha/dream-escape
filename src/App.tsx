@@ -40,6 +40,7 @@ function App() {
         <CssBaseline />
         <GlobalStyles styles={{ background: "#e0e0e0" }} />
         <ItemSkeleton />
+        {isLoading && [1, 2, 3, 4, 5].map((i) => <ItemSkeleton key={i} />)}
         {data.slice(pageNo * 5 - 5, pageNo * 5).map((user) => (
           <Item key={user.id} data={user} />
         ))}
