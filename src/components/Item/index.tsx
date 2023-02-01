@@ -12,14 +12,12 @@ import type { UserData } from "../../types/Response.type";
 import Details from "./Details";
 import Label from "./Label";
 import ArrowDown from "@mui/icons-material/ExpandMoreRounded";
-import { useBreakpoint } from "react-use-size";
 
 type Props = {
   data: UserData;
 };
 
 function Item({ data }: Props) {
-  const isSmall = useBreakpoint(600);
   const [open, setOpen] = useState(false);
 
   const toggleOpen = () => setOpen((prev) => !prev);
@@ -30,7 +28,7 @@ function Item({ data }: Props) {
         borderRadius: 3,
         p: [2, 3],
         mb: 4,
-        mx: [2, 3],
+        mx: [2, 3, 4],
         border: "1px solid white",
         boxShadow:
           "11px 11px 22px #bababa, -11px -11px 22px #ffffff, inset 11px 11px 22px #f0f0f0",
