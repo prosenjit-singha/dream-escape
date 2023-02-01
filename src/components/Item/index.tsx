@@ -6,6 +6,7 @@ import {
   Box,
   IconButton,
   Tooltip,
+  Link,
 } from "@mui/material";
 import { useState } from "react";
 import type { UserData } from "../../types/Response.type";
@@ -44,34 +45,32 @@ function Item({ data }: Props) {
               sx={{
                 fontSize: "clamp(1.35rem, 4vw, 1.5rem)",
                 fontWeight: 500,
-                mb: 1,
               }}
             >
               {data.company.name}
             </Typography>
+            <Link href={data.website} target="_blank">
+              {data.website}
+            </Link>
           </Grid>
           {/* Contact */}
-          <Grid item xs={4} md={2}>
+          <Grid item xs={6} md={3}>
             <Stack>
               <Label>Contact</Label>
               <Typography>{data.name}</Typography>
             </Stack>
           </Grid>
           {/* City */}
-          <Grid item xs={4} md={2}>
+          <Grid item xs={6} md={3}>
             <Label>City</Label>
             <Typography>{data.address.city}</Typography>
-          </Grid>
-          {/* State */}
-          <Grid item xs={4} md={2}>
-            <Label>State</Label>
-            <Typography>{data.address.suite}</Typography>
           </Grid>
         </Grid>
         {/* Show More Button */}
         <Box
           sx={{
             height: "fit-content",
+            // flexBasis: { sm: "30%", md: "20%" },
             my: "auto",
             ml: "auto",
           }}

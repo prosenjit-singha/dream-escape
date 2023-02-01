@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { useState } from "react";
 import { Pagination } from "@mui/material";
+import ItemSkeleton from "./components/Item/ItemSkeleton";
 
 function App() {
   const [pageNo, setPageNo] = useState(1);
@@ -38,9 +39,11 @@ function App() {
       <Main sx={{ mt: [2, 3] }}>
         <CssBaseline />
         <GlobalStyles styles={{ background: "#e0e0e0" }} />
+        <ItemSkeleton />
         {data.slice(pageNo * 5 - 5, pageNo * 5).map((user) => (
           <Item key={user.id} data={user} />
         ))}
+
         <Pagination
           count={Math.ceil(data.length / 5)}
           variant="outlined"
