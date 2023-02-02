@@ -39,17 +39,23 @@ function Item({ data }: Props) {
         {/* Header */}
         <Grid container sx={{ flexBasis: { sm: "70%", md: "80%" } }}>
           {/* Company Name */}
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} sx={{ mb: [1, 1, 0] }}>
             <Typography
               component="h1"
               sx={{
                 fontSize: "clamp(1.35rem, 4vw, 1.5rem)",
                 fontWeight: 500,
+                lineHeight: [1],
               }}
             >
               {data.company.name}
             </Typography>
-            <Link href={data.website} target="_blank">
+
+            <Link
+              href={data.website}
+              target="_blank"
+              sx={{ textDecorationLine: "none" }}
+            >
               {data.website}
             </Link>
           </Grid>

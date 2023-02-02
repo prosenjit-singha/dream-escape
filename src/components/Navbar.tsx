@@ -1,5 +1,6 @@
-import { AppBar, Toolbar } from "@mui/material";
+import { AppBar, Toolbar, InputBase, IconButton, Stack } from "@mui/material";
 import Logo from "./Logo";
+import SearchIcon from "@mui/icons-material/Search";
 
 function Navbar() {
   return (
@@ -17,6 +18,21 @@ function Navbar() {
     >
       <Toolbar sx={{ px: [2, 3, 4] }}>
         <Logo />
+        <Stack direction="row" sx={{ ml: "auto" }}>
+          <InputBase
+            sx={{ ml: 1, flex: 1 }}
+            placeholder="Search Company Name"
+            inputProps={{
+              "aria-label": "search company name",
+              style: {
+                textAlign: "end",
+              },
+            }}
+          />
+          <IconButton>
+            <SearchIcon />
+          </IconButton>
+        </Stack>
       </Toolbar>
     </AppBar>
   );

@@ -15,26 +15,22 @@ function ItemSkeleton() {
     >
       <Stack direction="row" spacing={2} alignItems="center">
         {/* Header */}
-        <Grid spacing={2} container sx={{ flexBasis: "100%" }}>
+        <Grid spacing={1} container sx={{ flexBasis: "100%" }}>
           {/* Company Name */}
           <Grid item xs={12} md={6}>
-            <Skeleton height={40} width={220} />
+            <Skeleton height={45} width={220} />
+            <Skeleton height={20} width={180} />
           </Grid>
           {/* Contact */}
-          <Grid item xs={4} md={2}>
+          <Grid item xs={6} md={3}>
             <Stack>
-              <Skeleton height={32} width={100} />
+              <Skeleton height={32} />
               <Skeleton />
             </Stack>
           </Grid>
           {/* City */}
-          <Grid item xs={4} md={2}>
-            <Skeleton height={32} width={100} />
-            <Skeleton />
-          </Grid>
-          {/* State */}
-          <Grid item xs={4} md={2}>
-            <Skeleton height={32} width={100} />
+          <Grid item xs={6} md={3}>
+            <Skeleton height={32} />
             <Skeleton />
           </Grid>
         </Grid>
@@ -46,7 +42,7 @@ function ItemSkeleton() {
           }}
         >
           <Skeleton
-            height={40}
+            height={50}
             width={150}
             sx={{ display: ["none", "flex"] }}
           />

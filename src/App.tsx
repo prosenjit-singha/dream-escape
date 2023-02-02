@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Pagination } from "@mui/material";
 import ItemSkeleton from "./components/Item/ItemSkeleton";
 
@@ -31,6 +31,14 @@ function App() {
       fontFamily: "'Poppins', sans-serif;",
     },
   });
+
+  useEffect(() => {
+    // for (var i = 0; i < 3; i++) {
+    //   setTimeout(function () {
+    //     alert(i);
+    //   }, 1000 + i);
+    // }
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
