@@ -3,7 +3,7 @@ import { styled } from "@mui/material";
 export const Main = styled("main")`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: calc(100vh - 64px);
   max-width: 1400px;
   margin-inline: auto;
 `;

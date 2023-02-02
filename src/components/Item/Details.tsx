@@ -41,9 +41,10 @@ function Details({ open, data }: Props) {
   );
 }
 
-const Label = styled("h3")(() => ({
+const Label = styled("h3")(({ theme }) => ({
   fontSize: "clamp(1rem, 3vw, 1.05rem)",
   fontWeight: 500,
+  // color: theme.palette.text.secondary,
 }));
 
 const Block = ({ label, value }: { label: string; value: string | number }) => (
