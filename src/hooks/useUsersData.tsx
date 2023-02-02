@@ -5,7 +5,7 @@ import type SuccessResponse from "../types/Response.type";
 const fetch = () =>
   axios.get(process.env.REACT_APP_ENDPOINT || "").then((res) => res.data);
 
-const useUsersData = () =>
+const useUsersData = (searchString: string) =>
   useQuery<SuccessResponse, SuccessResponse>({
     queryKey: ["users"],
     queryFn: fetch,
@@ -13,6 +13,10 @@ const useUsersData = () =>
       console.error(err);
       return [];
     },
+    select: (data) =>
+      data.filter((user) =>
+        user.company.name.toLowerCase().includes(searchString.toLowerCase())
+      ),
   });
 
 export default useUsersData;

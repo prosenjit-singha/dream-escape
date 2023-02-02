@@ -4,18 +4,20 @@ import useUsersData from "./hooks/useUsersData";
 import { CssBaseline, GlobalStyles, ThemeProvider } from "@mui/material";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Pagination } from "@mui/material";
 import ItemSkeleton from "./components/Item/ItemSkeleton";
 import lightTheme from "./styles/theme/lightTheme";
 import darkTheme from "./styles/theme/darkTheme";
+import NoDataFound from "./components/NoDataFound";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [theme, setTheme] = useState(lightTheme);
   const [pageNo, setPageNo] = useState(1);
   const [searchString, setSearchString] = useState("");
-  const { data = [], isLoading } = useUsersData();
+  // const [new]
+  const { data = [], isLoading } = useUsersData(searchString);
 
   const handlePageChange = (e: React.ChangeEvent<unknown>, page: number) => {
     setPageNo(page);
@@ -27,6 +29,11 @@ function App() {
     else setTheme(darkTheme);
     setDarkMode((prev) => !prev);
   };
+
+  // side effects
+  // useEffect(()=> {
+
+  // }, [searchString]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -44,22 +51,14 @@ function App() {
         {/* <ItemSkeleton /> */}
         {isLoading && [1, 2, 3, 4, 5].map((i) => <ItemSkeleton key={i} />)}
 
-        {data.slice(pageNo * 5 - 5, pageNo * 5).map((user) => {
-          if (
-            user.company.name.toLowerCase().includes(searchString.toLowerCase())
-          )
-            return <Item key={user.id} data={user} />;
-          else return null;
-        })}
+        {!isLoading &&
+          data
+            .slice(pageNo * 5 - 5, pageNo * 5)
+            .map((user) => <Item key={user.id} data={user} />)}
+        {!isLoading && !data.length && <NoDataFound />}
 
         <Pagination
-          count={Math.ceil(
-            data.filter((user) =>
-              user.company.name
-                .toLowerCase()
-                .includes(searchString.toLowerCase())
-            ).length / 5
-          )}
+          count={Math.ceil(data.length / 5)}
           variant="outlined"
           shape="rounded"
           color="primary"
@@ -68,13 +67,7 @@ function App() {
           sx={{
             mx: "auto",
             mb: [3, 4],
-            display: data.filter((user) =>
-              user.company.name
-                .toLowerCase()
-                .includes(searchString.toLowerCase())
-            ).length
-              ? "block"
-              : "none",
+            display: data.length ? "block" : "none",
           }}
         />
       </Main>
