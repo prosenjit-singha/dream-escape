@@ -1,36 +1,31 @@
 import Item from "./components/Item";
 import { Main } from "./components/styled";
 import useUsersData from "./hooks/useUsersData";
-import {
-  CssBaseline,
-  GlobalStyles,
-  ThemeProvider,
-  createTheme,
-} from "@mui/material";
+import { CssBaseline, GlobalStyles, ThemeProvider } from "@mui/material";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
 import { Pagination } from "@mui/material";
 import ItemSkeleton from "./components/Item/ItemSkeleton";
+import lightTheme from "./styles/theme/lightTheme";
+import darkTheme from "./styles/theme/darkTheme";
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+  const [theme, setTheme] = useState(lightTheme);
   const [pageNo, setPageNo] = useState(1);
   const { data = [], isLoading } = useUsersData();
+
   const handlePageChange = (e: React.ChangeEvent<unknown>, page: number) => {
     setPageNo(page);
   };
-  const theme = createTheme({
-    palette: {
-      mode: "light",
-      primary: {
-        main: "#118d47",
-      },
-    },
-    typography: {
-      h1: { fontFamily: "Outfit', sans-serif" },
-      fontFamily: "'Poppins', sans-serif;",
-    },
-  });
+
+  // toggle theme color scheme
+  const toggleTheme = () => {
+    if (darkMode) setTheme(lightTheme);
+    else setTheme(darkTheme);
+    setDarkMode((prev) => !prev);
+  };
 
   useEffect(() => {
     // for (var i = 0; i < 3; i++) {
@@ -42,7 +37,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Navbar />
+      <Navbar darkMode={darkMode} theme={theme} toggleTheme={toggleTheme} />
       {/* Body */}
       <Main sx={{ mt: [2, 3] }}>
         <CssBaseline />

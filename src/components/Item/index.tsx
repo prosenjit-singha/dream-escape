@@ -20,20 +20,25 @@ type Props = {
 
 function Item({ data }: Props) {
   const [open, setOpen] = useState(false);
+  const lightShadow =
+    "11px 11px 22px #bababa, -11px -11px 22px #ffffff, inset 11px 11px 22px #e9e9e9, inset -11px -11px 22px #f0f0f0";
+  const darkShadow =
+    "11px 11px 38px #0c0e0d, -11px -11px 38px #323835, inset 11px 11px 22px #1d201f, inset -11px -11px 22px #242826";
 
   const toggleOpen = () => setOpen((prev) => !prev);
 
   return (
     <Stack
-      sx={{
+      sx={({ palette }) => ({
         borderRadius: 3,
         p: [2, 3],
         mb: 4,
         mx: [2, 3, 4],
-        border: "1px solid white",
-        boxShadow:
-          "11px 11px 22px #bababa, -11px -11px 22px #ffffff, inset 11px 11px 22px #f0f0f0",
-      }}
+        border: `1px solid ${
+          palette.mode === "dark" ? "rgba(255,255,255,0.05)" : "white"
+        }`,
+        boxShadow: palette.mode === "dark" ? darkShadow : lightShadow,
+      })}
     >
       <Stack direction="row">
         {/* Header */}

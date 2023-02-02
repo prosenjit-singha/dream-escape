@@ -1,8 +1,23 @@
-import { AppBar, Toolbar, InputBase, IconButton, Stack } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  InputBase,
+  IconButton,
+  Stack,
+  Theme,
+} from "@mui/material";
 import Logo from "./Logo";
 import SearchIcon from "@mui/icons-material/Search";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 
-function Navbar() {
+type Props = {
+  theme: Theme;
+  darkMode: boolean;
+  toggleTheme: () => void;
+};
+
+function Navbar({ darkMode, toggleTheme }: Props) {
   return (
     <AppBar
       position="sticky"
@@ -33,6 +48,9 @@ function Navbar() {
             <SearchIcon />
           </IconButton>
         </Stack>
+        <IconButton onClick={toggleTheme}>
+          {darkMode ? <LightModeIcon /> : <DarkModeIcon />}
+        </IconButton>
       </Toolbar>
     </AppBar>
   );

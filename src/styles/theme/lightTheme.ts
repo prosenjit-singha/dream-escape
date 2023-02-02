@@ -1,7 +1,7 @@
 import { createTheme } from "@mui/material";
 import commonStyles from "./commonStyles";
 
-const light = createTheme({
+const lightTheme = createTheme({
   ...commonStyles,
   palette: {
     mode: "light",
@@ -11,4 +11,4 @@ const light = createTheme({
   },
 });
 
-export default light;
+export default lightTheme;

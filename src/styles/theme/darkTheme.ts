@@ -3,10 +3,13 @@ import commonStyles from "./commonStyles";
 
 const bgColor = "#1f2321";
 
-const dark = createTheme({
+const darkTheme = createTheme({
   ...commonStyles,
   palette: {
     mode: "dark",
+    primary: {
+      main: "#21cc6b",
+    },
     background: {
       default: bgColor,
       paper: bgColor,
@@ -14,4 +17,4 @@ const dark = createTheme({
   },
 });
 
-export default dark;
+export default darkTheme;
